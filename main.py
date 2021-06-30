@@ -27,18 +27,12 @@ def login():
     for i in my_cursor:
         if name_ent.get() == i[0] and password_ent.get() == i[1]:
             messagebox.showinfo("Login Successful", "Access Granted")
-            name_ent.delete(0, END)
-            password_ent.delete(0, END)
-            # import menu
             break
-    if name_ent.get() != i[0]:
-        messagebox.showerror("Incorrect Username", "Please Enter Correct Username")
+
+    if name_ent.get() != i[0] or password_ent.get() != i[1]:
+        messagebox.showerror("Access Denied", "Incorrect Name or Password")
         name_ent.delete(0, END)
-
-    elif password_ent.get() != i[1]:
-        messagebox.showerror("Incorrect Password", "Please Enter Correct Password")
         password_ent.delete(0, END)
-
 
 
 log_btn = Button(root, text="Login", command=login)
