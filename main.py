@@ -38,13 +38,16 @@ def login():
 
 
 def register():
-    messagebox.showinfo("Register", "You have been Registered")
-    my_db = mysql.connector.connect(user="abdul-malik", password="@8-2fermENt2020", host="127.0.0.1", database="mydb", auth_plugin="mysql_native_password")
-    my_cursor = my_db.cursor()
-    insert = "INSERT INTO Login (user, password) VALUES (%s, %s)"
-    entries = (name_ent.get(), password_ent.get())
-    my_cursor.execute(insert, entries)
-    my_db.commit()
+    if name_ent.get() == "" and password_ent.get() == "":
+        messagebox.showerror("No Entries", "Please Insert your name and password")
+    else:
+        messagebox.showinfo("Register", "You have been Registered")
+        my_db = mysql.connector.connect(user="abdul-malik", password="@8-2fermENt2020", host="127.0.0.1", database="mydb", auth_plugin="mysql_native_password")
+        my_cursor = my_db.cursor()
+        insert = "INSERT INTO Login (user, password) VALUES (%s, %s)"
+        entries = (name_ent.get(), password_ent.get())
+        my_cursor.execute(insert, entries)
+        my_db.commit()
 
 
 log_btn = Button(root, text="Login", command=login)
