@@ -27,6 +27,7 @@ def login():
     for i in my_cursor:
         if name_ent.get() == i[0] and password_ent.get() == i[1]:
             messagebox.showinfo("Login Successful", "Access Granted")
+            import link
             break
 
     if name_ent.get() == "" and password_ent.get() == "":
